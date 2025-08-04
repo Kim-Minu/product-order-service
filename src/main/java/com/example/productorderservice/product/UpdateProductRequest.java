@@ -2,15 +2,9 @@ package com.example.productorderservice.product;
 
 import org.springframework.util.Assert;
 
-record GetProductResponse(
-    long id,
-    String name,
-    int price,
-    DiscountPolicy discountPolicy
-) {
+record UpdateProductRequest(String name, int price, DiscountPolicy discountPolicy) {
 
-  public GetProductResponse {
-    Assert.notNull(id, "id must not be null");
+  UpdateProductRequest {
     Assert.hasText(name, "name must not be empty");
     Assert.isTrue(price > 0, "price must be greater than 0");
     Assert.notNull(discountPolicy, "discountPolicy must not be null");

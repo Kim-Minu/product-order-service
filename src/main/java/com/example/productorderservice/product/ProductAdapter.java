@@ -1,6 +1,7 @@
 package com.example.productorderservice.product;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 class ProductAdapter implements ProductPort {
@@ -16,10 +17,10 @@ class ProductAdapter implements ProductPort {
   }
 
   @Override
-  public Product getProduct(long productId) {
+  public Product getProduct(Long productId) {
 
     return productRepository.findById(productId)
-            .orElseThrow(() -> new IllegalArgumentException("상품이 존재하지 않습니다."));
+        .orElseThrow(() -> new IllegalArgumentException("Product not found"));
   }
 
 }
